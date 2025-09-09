@@ -1,0 +1,42 @@
+@use'variaveis';
+
+
+/* Bloco Devices (Customização Bootstrap) */
+.devices {
+   padding: 2vw 5.6vw;
+  
+   background-color: variaveis.$bg-primary;
+}
+
+.devices__title {
+    color: #f8f4f4;
+}
+
+/* Customização do Card */
+.devices__card {
+    background-color: variaveis.$bg-primary; /* Fundo escuro do card */
+    border: 1px solid rgba(249, 249, 249, 0.1); /* Borda sutil */
+    border-radius: 8px;
+    transition: transform 0.3s ease, border-color 0.3s ease; /* Transição suave para o hover */
+}
+
+/* Efeito Hover */
+.devices__card:hover {
+    transform: scale(1.05); /* Efeito de zoom */
+    border-color: rgba(249, 249, 249, 0.8); /* Borda fica mais visível */
+}
+
+/* Imagem dentro do Card */
+.devices__card__img {
+    max-height: 80px;
+    width: auto;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+/* Lista de Plataformas dentro do Card */
+.devices__card .card-body ul {
+    color: #cacaca; /* Cor mais suave para o texto secundário */
+    font-size: 16px;
+    line-height: 1.6;
+}

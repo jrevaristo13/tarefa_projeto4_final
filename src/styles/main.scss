@@ -1,0 +1,127 @@
+@use'variaveis';
+@use'hero';
+@use'shows';
+@use'plans';
+@use'watch-anywhare';
+@use'dispositivos';
+@use'faqAccordion';
+@use'header';
+@use'footer';
+
+
+@font-face {
+    font-family: Avenir;
+    src: url(../../assent/fonts/Avenir-Regular.woff2);
+    font-weight: 400; 
+ }
+
+ @font-face {
+    font-family: Avenir;
+    src: url(../../assets/fonts/Avenir-Bold.woff2);
+    font-weight: 700;
+ }
+
+body {
+background-color: variaveis.$bg-primary;
+font-family: Avenir, sans-serif;
+padding-top: 85px; 
+box-sizing: border-box;
+
+}
+@mixin text($fontSizer : 16px) {
+font-size: $fontSizer;
+line-height: $fontSizer + 10px;
+color: variaveis.$text-color;
+}
+.text--big {
+    @include text(18px);
+}
+
+.text {
+    @include text(16px);
+}
+
+.text--small {
+    @include text(12px);
+}
+
+@mixin title($fontSizer : 40px) {
+    @include text($fontSizer);
+    color: variaveis.$text-color;
+}
+.title--big {
+    @include title(44px);
+}
+
+.title {
+    @include title;
+}
+
+.title--small {
+    @include title(28px);
+}
+
+.link--text {
+    @include text(18px);
+    color: variaveis.$text-color;
+    text-decoration: underline;
+}
+
+.img {
+    transform: translateY(-15px);
+}
+/* ================================================================= */
+/*    CÓDIGO CORRIGIDO E OTIMIZADO PARA SCROLL SNAPPING              */
+/* ================================================================= */
+
+/* PASSO 1: Garantir que a página possa rolar */
+html, body {
+    /* FORÇA a rolagem vertical a ser permitida, sobrepondo qualquer reset */
+    overflow-y: auto !important;
+    
+    /* Previne a rolagem horizontal indesejada que pode aparecer */
+    overflow-x: hidden !important;
+}
+
+/* PASSO 2: Configurando o container da rolagem */
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+/* Ajuste para o seu header fixo (isso já estava correto) */
+:root {
+    scroll-padding-top: 75px;
+}
+
+/* 
+  PASSO 3: Ajustando as seções para serem mais flexíveis.
+  Esta é a principal melhoria.
+*/
+section {
+    /* 
+      MUDANÇA IMPORTANTE: Usamos ALTURA MÍNIMA em vez de altura fixa.
+      Isso permite que a seção cresça se o conteúdo for maior que a tela,
+      o que é muito mais seguro e flexível.
+    */
+    min-height: 100vh;
+    height: auto; /* Removemos a altura fixa */
+
+    /* Define o ponto de alinhamento no topo (continua igual) */
+    scroll-snap-align: start;
+
+    /* 
+      BÔNUS: Usando flexbox para centralizar o conteúdo verticalmente dentro da seção.
+      Isso deixa o layout mais bonito, especialmente em seções com pouco conteúdo.
+    */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* PASSO 4: Exceção para o Rodapé (continua igual) */
+.footer {
+    height: auto; /* Altura automática */
+    min-height: auto; /* Remove a altura mínima */
+    scroll-snap-align: none; /* Desativa o "snap" */
+}

@@ -1,0 +1,65 @@
+@use'variaveis';
+
+
+  .shows__tabs .nav-tabs {
+            border-bottom: none; /* Remove a linha padrão do Bootstrap */
+            padding: 2vw 5.6vw;
+            background-color: variaveis.$bg-primary;
+            
+           
+        }
+
+       .shows__tabs .nav-link {
+            background: none;
+            
+            color: #fcfafa; /* Cor para abas inativas */
+            text-transform: uppercase;
+            font-weight: bold;
+            padding-bottom: 8px;
+            position: relative;
+        }
+
+        /* Linha indicadora da aba ativa/hover */
+        .shows__tabs .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #f9f9f9;
+            transform: scaleX(0); /* Escondida por padrão */
+            transition: transform 0.3s ease;
+        }
+
+        
+        /* Mostra a linha na aba ativa ou ao passar o mouse */
+        .shows__tabs .nav-link.active,
+        .shows__tabs .nav-link:hover {
+            color: #0edcaf; /* Cor para aba ativa */
+            border-color: transparent;
+        }
+
+        .shows__tabs .nav-link.active::after,
+        .shows__tabs .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Estilo e efeito para os cards */
+        .image-card {
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+        }
+
+        .image-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 30px rgba(245, 237, 237, 0.5);
+            border-color: #c0c0c0;
+        }
+        .b_cor{
+          background-color:variaveis.$bg-primary ;
+        }
+        

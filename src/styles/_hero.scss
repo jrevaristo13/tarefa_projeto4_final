@@ -1,0 +1,128 @@
+ @use'variaveis';
+
+    
+.hero {
+    display: grid;
+    /* Divide a tela: 55% para o conteúdo, 45% para as imagens */
+    grid-template-columns: 1fr 1fr ;
+    min-height: 90vh; /* Ocupa a altura inteira da tela */
+    background-image: url(../../src/images/hero_desktop.jpeg);
+    padding: 2vw 5.6vw;
+    justify-content: space-between;
+    margin-top: 40px;
+    
+    
+    
+
+}
+
+/* COLUNA DA ESQUERDA: CONTEÚDO */
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    padding: 0 5%; /* Espaçamento nas laterais */
+    color: #f9f9f9;
+}
+
+.hero__content__branding img {
+    width: 100%;
+ position: relative;
+ transform: translateY(-190px);
+ 
+ 
+}
+
+.title--small {
+    font-size: 22px;
+    position: absolute;
+    transform: translateY(-180px);
+    margin-left: 145px;
+
+}
+.text--small{
+    text-align: center;
+    transform: translateY(-105px);
+}
+
+.link-text {
+    color: #f9f9f9;
+    text-decoration: underline;
+}
+
+.text, .text--small {
+    color: #c0c0c0;
+    font-size: 12px;
+}
+.text {
+    font-size: 14px;
+}
+
+.hero__content__combos {
+    display: flex;
+    gap: 24px; /* Espaço entre os combos */
+    margin-left: -100px;
+    transform: translateY(-70px);
+}
+
+.combo {
+    text-align: center;
+}
+
+.combo img {
+    height: 58%;
+}
+
+.button {
+    background-color: #6421ff;
+    color: #f9f9f9;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #824ff9;
+}
+
+/* COLUNA DA DIREITA: IMAGENS DOS PERSONAGENS */
+.hero__characters {
+    display: grid;
+    /* Cria 4 colunas iguais para as imagens, sem espaço entre elas */
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.character-panel {
+    position: relative; /* Necessário para posicionar o logo da franquia */
+    height: 100vh; /* Faz cada painel ocupar a altura toda */
+}
+
+.character-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ESSENCIAL: Faz a imagem cobrir o espaço sem distorcer */
+    display: block;
+}
+
+/* Logo da franquia (Disney, Pixar, etc.) */
+.franchise-logo {
+    position: absolute;
+    bottom: 24px; /* Distância da base */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%);
+    height: 40px !important; /* Altura fixa para os logos */
+    width: auto !important; /* Largura automática */
+}
+.text--small_1{
+   
+    margin-left: 110px;
+    
+}

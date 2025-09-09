@@ -1,0 +1,51 @@
+@use'variaveis';
+    
+    
+
+      
+
+
+.faq{
+
+    padding: 2vw 5.6vw;
+    background-color: variaveis.$bg-primary;
+    text-align: center;
+}
+.faq .accordion-item {
+    background-color: variaveis.$bg-primary; /* Cor de fundo do item */
+    margin-bottom: 8px;
+    border: none;
+     
+            
+}
+
+/* Estilo do corpo da resposta (onde o texto fica) */
+.faq .accordion-body {
+    background-color: #13151d !important; /* Garante o fundo correto */
+    color: #cba013; /* Sua cor $text-color-muted */
+}
+
+/* Estilo do botão da pergunta (quando está fechado) */
+.faq .accordion-button {
+    background-color: #13151d;
+    color: #f9f9f9; /* Sua cor $text-color */
+}
+
+/* 
+  ESTILO DO BOTÃO QUANDO ABERTO (ATIVO)
+  Esta é a regra mais importante para sobrescrever o azul do Bootstrap.
+*/
+.faq .accordion-button:not(.collapsed) {
+    color: #f9f9f9 !important; /* Sua cor $text-color */
+    background-color: #1c1e2a !important; /* Fundo um pouco mais claro para dar feedback */
+    box-shadow: none !important; /* Remove a sombra azul padrão */
+}
+
+/* 
+  Ajuste do ícone de seta (para cima/baixo).
+  Este filtro força o ícone padrão do Bootstrap a ficar branco (#f9f9f9).
+*/
+.faq .accordion-button::after,
+.faq .accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1);
+}
