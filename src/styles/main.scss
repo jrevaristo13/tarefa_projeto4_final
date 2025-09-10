@@ -1,12 +1,9 @@
 @use'variaveis';
 @use'hero';
 @use'shows';
-@use'plans';
-@use'watch-anywhare';
-@use'dispositivos';
-@use'faqAccordion';
-@use'header';
 @use'footer';
+@use'personagens';
+
 
 
 @font-face {
@@ -24,7 +21,7 @@
 body {
 background-color: variaveis.$bg-primary;
 font-family: Avenir, sans-serif;
-padding-top: 85px; 
+
 box-sizing: border-box;
 
 }
