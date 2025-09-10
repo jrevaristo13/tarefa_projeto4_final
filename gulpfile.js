@@ -1,54 +1,48 @@
-//chamar os pluguins
-
+// Chamar os plugins
 const { src, dest, series, parallel, watch } = require('gulp');
-
-const sass = require('gulp-sass') (require('sass'));
+const dartSass = require('gulp-dart-sass');
 const concat = require('gulp-concat');
 const imagemin = require('gulp-imagemin');
-const dart = require('gulp-dart');
-const dartSass = require('gulp-dart-sass');
 
-//funçao para compilar o sass
-
+// Função para compilar o Sass -> CSS comprimido em public/css
 function buildStyles() {
-    return  src ('src/styles/**/*.scss')
-    .pipe(dartSass({outputStyle: 'compressed'}).on('error', dartSass.logError))
-    .pipe(dest('dist/styles'));
+    return src('src/styles/**/*.scss')
+        .pipe(dartSass({ outputStyle: 'compressed' }).on('error', dartSass.logError))
+        .pipe(dest('public/css'));
 }
 
-//funçao para juntar os arquivos js
-
-function buildScripts(){
+// Função para juntar/copiar os arquivos JS -> public/js
+function buildScripts() {
     return src('src/scripts/**/*.js')
-    .pipe(dest('dist/scripts'));
+        .pipe(concat('main.js')) // opcional: junta tudo em um só
+        .pipe(dest('public/js'));
 }
-//funçao para otmizar as imagens
 
-function optimizarImagens(){
-    return src ('src/images/**/*', {encoding: false})
-    .pipe(imagemin())
-    .pipe(dest('dist/images'));
+// Função para otimizar as imagens -> public/images
+function optimizeImages() {
+    return src('src/images/**/*', { encoding: false })
+        .pipe(imagemin())
+        .pipe(dest('public/images'));
 }
 
 // Tarefa para monitorar alterações nos arquivos
 function watchFiles() {
     watch('src/styles/**/*.scss', buildStyles);
     watch('src/scripts/**/*.js', buildScripts);
-    watch('src/images/**/*', optimizarImagens);
-  }
- //tarefa para construir os quivos de produçao somente uma vez
- const build = parallel(buildStyles, buildScripts, optimizarImagens);
- //exportar tarefas  individuais
+    watch('src/images/**/*', optimizeImages);
+}
 
- exports.styles = buildStyles;
- exports.scripts = buildScripts;
- exports.images = optimizarImagens;
- exports.watch = watchFiles;
- exports.build = build;
+// Tarefa para construir todos os arquivos uma vez
+const build = parallel(buildStyles, buildScripts, optimizeImages);
 
- //tarefa padrao
- exports.default = series(
-    parallel(buildStyles, buildScripts, optimizarImagens),
-    watchFiles
-  );
+// Exportar tarefas individuais
+exports.buildStyles = buildStyles;
+exports.buildScripts = buildScripts;
+exports.optimizeImages = optimizeImages;
+exports.watch = watchFiles;
+exports.build = build;
+
+// Tarefa padrão (roda build completo e fica observando mudanças)
+exports.default = series(build, watchFiles);
+
   
