@@ -18,6 +18,12 @@ function buildScripts() {
         .pipe(dest('public/js'));
 }
 
+// Função para copiar os arquivos HTML para a pasta public
+function copyHtml() {
+    return src('src/html/**/*.html')
+        .pipe(dest('public'));
+}
+
 // Função para otimizar as imagens -> public/images
 function optimizeImages() {
     return src('src/images/**/*', { encoding: false })
@@ -33,12 +39,13 @@ function watchFiles() {
 }
 
 // Tarefa para construir todos os arquivos uma vez
-const build = parallel(buildStyles, buildScripts, optimizeImages);
+const build = parallel(buildStyles, buildScripts, optimizeImages, copyHtml);
 
 // Exportar tarefas individuais
 exports.buildStyles = buildStyles;
 exports.buildScripts = buildScripts;
 exports.optimizeImages = optimizeImages;
+exports.copyHtml = copyHtml; // <--- Não esqueça de exportar
 exports.watch = watchFiles;
 exports.build = build;
 
