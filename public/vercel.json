@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "VERCEL_BUILD_STEP": "true"
+    }
+  },
+  "outputDirectory": "public",
+  "installCommand": "npm install"
+}

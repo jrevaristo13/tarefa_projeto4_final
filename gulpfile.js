@@ -24,6 +24,12 @@ function copyHtml() {
         .pipe(dest('public'));
 }
 
+
+function copyJson() {
+    return src('src/json/**/*.json')
+        .pipe(dest('public'));
+}
+
 // Função para otimizar as imagens -> public/images
 function optimizeImages() {
     return src('src/images/**/*', { encoding: false })
@@ -39,7 +45,7 @@ function watchFiles() {
 }
 
 // Tarefa para construir todos os arquivos uma vez
-const build = parallel(buildStyles, buildScripts, optimizeImages, copyHtml);
+const build = parallel(buildStyles, buildScripts, optimizeImages, copyHtml, copyJson);
 
 // Exportar tarefas individuais
 exports.buildStyles = buildStyles;
