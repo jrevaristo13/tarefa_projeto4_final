@@ -6,7 +6,7 @@
     /* Divide a tela: 55% para o conteúdo, 45% para as imagens */
     grid-template-columns: 1fr 1fr ;
     min-height: 100vh; /* Ocupa a altura inteira da tela */
-    background-image: url(../../dist/images/hero.png);
+    background-image: url(../images/hero.png); /* <-- CAMINHO CORRIGIDO AQUI */
     padding: 2vw 5.6vw;
     justify-content: space-between;
     background-size: cover;
